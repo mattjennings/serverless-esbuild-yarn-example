@@ -1,0 +1,26 @@
+service: monorepo-example
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  esbuild:
+    packager: yarn
+    external:
+      - isin-validator
+    watch:
+      pattern: ["./index.ts", "src/**/*.ts"]
+      ignore: [".serverless/**/*", ".build"]
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  validateIsin:
+    handler: index.handler
+    events:
+      - http:
+          path: validate-isin/{isin}
+          method: get

@@ -1,0 +1,12 @@
+{
+  "name": "serverless-esbuild-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Matt Jennings",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "external",
+    "individual"
+  ]
+}
